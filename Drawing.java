@@ -53,12 +53,14 @@ public class Drawing{
         g.drawString(messages[villain-1], x + 50, y - 30);
     }
 
-    public static void woodenBackground(Graphics g, int w, int h){
+    public static void background(Graphics g, int w, int h, int n){
         BufferedImage bckgrnd = null; // declare image
-        try {
-            bckgrnd = ImageIO.read(new File("Rm639.png")); // here's the source
-        }
-        catch (IOException e) { // required
+        if (n == 0){
+            try {
+                bckgrnd = ImageIO.read(new File("Rm639.png")); // here's the source
+            }
+            catch (IOException e) { // required
+            }
         }
         g.setColor(Color.WHITE);
         g.drawImage(bckgrnd,0,0,w,h,null);

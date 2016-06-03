@@ -42,6 +42,7 @@ public class Room extends JPanel{
 
 	public void paintComponent(Graphics g, int villain){
         super.paintComponent(g);
+        Drawing.background(g, this.getWidth(), this.getHeight(), 0);
 		if(villain != 0)
 			Drawing.dean(g, _sx, _sy, _vill);
         if (_x < 0) _x = 999;

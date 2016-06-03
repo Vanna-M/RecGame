@@ -45,7 +45,7 @@ public class Rm639 extends Room{
             }
         }
 
-        Drawing.woodenBackground(g, this.getWidth(), this.getHeight());
+        
         super.paintComponent(g, 1);
         Drawing.door(g);
         Drawing.desk(g, deskX1, deskY1, deskSize);
