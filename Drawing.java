@@ -13,7 +13,7 @@ public class Drawing{
     public static void dean(Graphics g, int x, int y, int villain){
         BufferedImage d = null; // declare image
         try {
-            d = ImageIO.read(new File("Dean.png")); // here's the source, labelled in order
+            d = ImageIO.read(new File("Simone.png")); // here's the source, labelled in order
         }
         catch (IOException e) { // required
         }
@@ -49,7 +49,7 @@ public class Drawing{
     }
 
     public static void talk(Graphics g, int x, int y, int villain){
-		String[] messages = {"dean1 says this","dean2 says this","dean3 says this"};
+		String[] messages = {"You're not allowed to be here.","dean2 says this","dean3 says this"};
         g.drawString(messages[villain-1], x + 50, y - 30);
     }
 
