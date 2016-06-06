@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Rectangle.*;
 
 public class Rm639 extends Room{
 
@@ -8,7 +9,7 @@ public class Rm639 extends Room{
     private boolean note, found, done;
 
     public Rm639(int val, Room left, Room right, Room prev){
-        super(val, 0, left, right, prev);
+        super(val, 1, left, right, prev);
         deskX1 = 500;
         deskY1 = _y - 2*Math.abs(h - deskSize);
         deskSize = 100;
@@ -46,33 +47,33 @@ public class Rm639 extends Room{
         }
 
         
-        super.paintComponent(g, 1);
+        super.paintComponent(g);
         Drawing.door(g);
         Drawing.desk(g, deskX1, deskY1, deskSize);
-        Drawing.frisk(g, _x,_y, w, h);
         if (found){
             Drawing.talk(g,100,100,"Congratulations! You found a note. It says: \"Believe this to be true, the answer is inside of you\". What could that mean?");
-            found = false;
         }
         if (done){
-            Drawing.talk(g,100,100,"You found another piece of the rec!");
-            done = false;
+            Drawing.talk(g,100,110,"You found another piece of the rec!");
         }
 
 
     }
 
     public void mouseClicked(int x, int y){
-        if (note){
-            if (_x < x && _x + w > x && _y < y && _y + h > y){
-                done = true;
-                repaint();
-            }
-        }
-        else if (deskX1 - w < x && deskX2 > x && deskY1 - h < y && deskY2 > y){
+        Rectangle frisk = new Rectangle(_x, _y, _w + 50, _h + 50);
+        Rectangle desk = new Rectangle(deskX1, deskY1, deskSize, deskSize);
+
+        if (desk.contains(x,y)){
             note = true;
             found = true;
-            repaint();
         }
+        if (note){
+            if (frisk.contains(x,y)){
+                done = true;
+                found = false;
+            }
+        }
+        repaint();
     }
 }
