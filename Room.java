@@ -12,7 +12,7 @@ public class Room extends JPanel{
         3 = Disciplinary
     */
 	//protected int _villain = (int)(Math.random() * 4);
-	protected int _x,_y,_sx,_sy, _val, _vill, w, h;
+	protected int _x,_y,_sx,_sy, _val, _vill, _w, _h, _sh, _sw;
     private boolean dead;
     protected Room _left, _right, _prev;
 
@@ -23,8 +23,12 @@ public class Room extends JPanel{
         _y = 300;
         _sx = 200;
         _sy = 300;
-        w = 38;
-        h = 50;
+        _w = 38;
+        _h = 50;
+        if (_vill == 1){
+            _sh = 119;
+            _sw = 44;
+        }
         dead = false;
         _left = left;
         _right = right;
@@ -43,7 +47,7 @@ public class Room extends JPanel{
 	public void paintComponent(Graphics g, int villain){
         super.paintComponent(g);
         Drawing.background(g, this.getWidth(), this.getHeight(), 0);
-		if(villain != 0)
+		if (_vill != 0)
 			Drawing.dean(g, _sx, _sy, _vill);
         if (_x < 0) _x = 999;
         if (_x > 1000) _x = 1;
