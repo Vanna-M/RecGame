@@ -18,7 +18,8 @@ public class Tester implements KeyListener, MouseListener{
         mainframe.setSize(1000,500);
         mainframe.addKeyListener(this);
         mainframe.addMouseListener(this);
-
+        mainframe.setFocusable(true);
+        mainframe.setFocusTraversalKeysEnabled(false);
         mainframe.setLayout(new BorderLayout());
 
         room = new Rm639(0,null, null, null);
